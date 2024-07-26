@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const Header = () => {
   return (
-    <header className="bg-gray-800 p-4 shadow-md">
+    <header className="bg-yellow-200 p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo Section */}
         <div className="flex items-center">
@@ -26,12 +26,12 @@ const Header = () => {
         {/* Sign In / Sign Up Section */}
         <div className="flex space-x-4">
           <Link href="/signin">
-            <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            <button className="bg-white text-black px-4 py-2 rounded hover:bg-gray-400">
               Sign In
             </button>
           </Link>
           <Link href="/signup">
-            <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+            <button className="bg-white text-black px-4 py-2 rounded hover:bg-gray-400">
               Sign Up
             </button>
           </Link>
