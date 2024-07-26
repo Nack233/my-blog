@@ -25,12 +25,12 @@ const Header = () => {
 
         {/* Sign In / Sign Up Section */}
         <div className="flex space-x-4">
-          <Link href="/auth/signin">
+          <Link href="/signin">
             <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
               Sign In
             </button>
           </Link>
-          <Link href="/auth/signup">
+          <Link href="/signup">
             <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
               Sign Up
             </button>

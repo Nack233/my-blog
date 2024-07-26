@@ -5,7 +5,7 @@ import PostCard from './PostCard';
 
 const MainContent = () => {
   return (
-    <main className="w-5/6 p-4 bg-gray-300">
+    <main className="w-5/6 p-4 bg-white shadow">
       <PostCard 
         title="My Life as an Internet Novel"
         date="โพสต์เมื่อ 22 วันที่แล้ว"

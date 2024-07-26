@@ -5,7 +5,7 @@ import { IconHome, IconInfoCircle, IconMail, IconPencilPlus } from '@tabler/icon
 
 const Sidebar = () => {
   return (
-    <aside className="w-1/6 p-4 bg-gray-100 h-screen flex flex-col">
+    <aside className="w-1/6 p-4 bg-gray-200 h-screen flex flex-col">
       <button className="w-full bg-blue-500 text-white px-4 py-2 mb-4 rounded hover:bg-blue-600 flex items-center justify-center">
         <IconPencilPlus className="mr-2" />
         Create Post
