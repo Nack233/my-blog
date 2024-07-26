@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const Header = () => {
   return (
-    <header className="bg-yellow-200 p-4 shadow-md">
+    <header  className="bg-yellow-200 p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo Section */}
         <div className="flex items-center">

@@ -12,7 +12,7 @@ interface PostCardProps {
 
 const PostCard: React.FC<PostCardProps> = ({ title, date, genres, synopsis, latestChapter }) => {
   return (
-    <article style={{ backgroundColor: '#FFF9D0' }} className="bg-gray-800 text-white rounded-lg p-6 mb-6 shadow-md">
+    <article style={{ backgroundColor: '#C4DFAA' }} className="bg-gray-800 text-white rounded-lg p-6 mb-6 shadow-md">
       <h2 className="text-2xl font-bold mb-2 text-black">{title}</h2>
       <p  className="text-gray-600 mb-4">{date}</p>
       {genres && (

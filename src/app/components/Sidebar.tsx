@@ -5,26 +5,26 @@ import { IconHome, IconInfoCircle, IconMail, IconPencilPlus } from '@tabler/icon
 
 const Sidebar = () => {
   return (
-    <aside className="w-1/6 p-4 bg-white h-screen flex flex-col shadow">
+    <aside style={{ backgroundColor: '#FDF7C3' }} className="w-1/6 p-4 bg-white h-screen flex flex-col shadow">
       <a href="/createpost" className="w-full bg-blue-500 text-white px-4 py-2 mb-4 rounded hover:bg-blue-600 flex items-center justify-center">
         <IconPencilPlus className="mr-2" />
         Create Post
       </a>
       <ul className="space-y-2">
         <li>
-          <a href="/blogs" className="flex items-center px-4 py-2 rounded hover:bg-blue-100 text-gray-700 hover:text-blue-500">
+          <a href="/blogs" className="flex items-center px-4 py-2 rounded hover:text-yellow-500 text-gray-700 hover:text-yellow-500">
             <IconHome className="mr-2" />
             Home
           </a>
         </li>
         <li>
-          <a href="/about" className="flex items-center px-4 py-2 rounded hover:bg-blue-100 text-gray-700 hover:text-blue-500">
+          <a href="/about" className="flex items-center px-4 py-2 rounded hover:text-yellow-500 text-gray-700 hover:text-yellow-500">
             <IconInfoCircle className="mr-2" />
-            About
+            About 
           </a>
         </li>
         <li>
-          <a href="#" className="flex items-center px-4 py-2 rounded hover:bg-blue-100 text-gray-700 hover:text-blue-500">
+          <a href="#" className="flex items-center px-4 py-2 rounded hover:text-yellow-500 text-gray-700 hover:text-yellow-500">
             <IconMail className="mr-2" />
             Contact
           </a>
