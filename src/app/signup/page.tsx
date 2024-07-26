@@ -9,14 +9,42 @@ function SignUpPage() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // ตรงนี้เพิ่มโลจิกการ sign up
+
+    // Check if passwords match
     if (password !== confirmPassword) {
       alert("Passwords don't match!")
       return
     }
-    console.log('Sign up with:', name, email, password)
+
+    try {
+      // Fetch API call with the correct syntax
+      const res = await fetch("http://localhost:3000/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password
+        })
+      })
+
+      if (res.ok) {
+        const form = e.target;
+        form.reset();
+      }else{
+        alert("Something went wrong!")
+      }
+
+      const data = await res.json()
+      console.log('Sign up successful:', data)
+
+    } catch (error) {
+      console.log("Error during register ", error)
+    }
   }
 
   return (
