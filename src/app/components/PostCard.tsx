@@ -12,13 +12,13 @@ interface PostCardProps {
 
 const PostCard: React.FC<PostCardProps> = ({ title, date, genres, synopsis, latestChapter }) => {
   return (
-    <article className="bg-gray-800 text-white rounded-lg p-6 mb-6 shadow-md">
-      <h2 className="text-2xl font-bold mb-2">{title}</h2>
-      <p className="text-gray-400 mb-4">{date}</p>
+    <article style={{ backgroundColor: '#FFF9D0' }} className="bg-gray-800 text-white rounded-lg p-6 mb-6 shadow-md">
+      <h2 className="text-2xl font-bold mb-2 text-black">{title}</h2>
+      <p  className="text-gray-600 mb-4">{date}</p>
       {genres && (
         <div className="flex flex-wrap gap-2 mb-4">
           {genres.map((genre) => (
-            <span key={genre} className="bg-gray-700 px-2 py-1 rounded text-sm">
+            <span key={genre} className="bg-white px-2 py-1 rounded text-sm text-gray-500">
               {genre}
             </span>
           ))}

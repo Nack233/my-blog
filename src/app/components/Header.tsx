@@ -18,7 +18,7 @@ const Header = () => {
           <input
             type="search"
             placeholder="ค้นหาหรือสร้างโพสต์..."
-            className="bg-gray-700 text-white px-4 py-2 rounded-full w-full focus:outline-none pl-10"
+            className="bg-white text-gray-700 px-4 py-2 rounded-full w-full focus:outline-none pl-10"
           />
           <IconSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
         </div>
