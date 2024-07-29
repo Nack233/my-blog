@@ -1,13 +1,16 @@
-import { Controller, Get } from '@nestjs/common';
-import { PrismaService } from '../../prisma.service';
+import { Controller, Post, Body } from '@nestjs/common';
+import { UserService } from './user.service'; // Update import to match the service
 
-@Controller('users')
+@Controller('auth')
 export class UserController {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly userService: UserService) {} // Ensure this matches the service name
 
-  @Get()
-  async getUsers() {
-    const users = await this.prisma.user.findMany();
-    return users; // ตรวจสอบว่ามีการส่งข้อมูลออกมาอย่างถูกต้อง
+  @Post('signup')
+  async register(
+    @Body('name') name: string,
+    @Body('email') email: string,
+    @Body('password') password: string,
+  ): Promise<any> {
+    return this.userService.registerUser(name, email, password); // Ensure function call matches the service
   }
 }

@@ -1,51 +1,45 @@
-"use client"
-import React, { useState } from 'react'
-import { FaGoogle, FaFacebook, FaEye, FaEyeSlash } from 'react-icons/fa'
+"use client";
+import React, { useState } from 'react';
+import { FaGoogle, FaFacebook, FaEye, FaEyeSlash } from 'react-icons/fa';
 
 function SignUpPage() {
-  const [showPassword, setShowPassword] = useState(false)
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    // Check if passwords match
+    e.preventDefault();
+  
     if (password !== confirmPassword) {
-      alert("Passwords don't match!")
-      return
+      alert("Passwords don't match!");
+      return;
     }
-
+  
     try {
-      // Fetch API call with the correct syntax
-      const res = await fetch("http://localhost:3000/api/register", {
+      const res = await fetch("http://localhost:3000/auth/signup", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name,
-          email,
-          password
-        })
-      })
-
+        body: JSON.stringify({ name, email, password }), // Make sure this matches your controller's expected structure
+      });
+  
       if (res.ok) {
-        const form = e.target;
-        form.reset();
-      }else{
-        alert("Something went wrong!")
+        const data = await res.json();
+        console.log('Sign up successful:', data);
+        window.location.href = '/signin';
+      } else {
+        const errorData = await res.text();
+        console.error("Server responded with:", errorData);
+        alert("Something went wrong!");
       }
-
-      const data = await res.json()
-      console.log('Sign up successful:', data)
-
     } catch (error) {
-      console.log("Error during register ", error)
+      console.error("Error during registration:", error);
     }
-  }
+  };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -58,9 +52,7 @@ function SignUpPage() {
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
-              <label htmlFor="name" className="sr-only">
-                Full Name
-              </label>
+              <label htmlFor="name" className="sr-only">Full Name</label>
               <input
                 id="name"
                 name="name"
@@ -73,9 +65,7 @@ function SignUpPage() {
               />
             </div>
             <div>
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
+              <label htmlFor="email-address" className="sr-only">Email address</label>
               <input
                 id="email-address"
                 name="email"
@@ -89,9 +79,7 @@ function SignUpPage() {
               />
             </div>
             <div className="relative">
-              <label htmlFor="password" className="sr-only">
-                Password
-              </label>
+              <label htmlFor="password" className="sr-only">Password</label>
               <input
                 id="password"
                 name="password"
@@ -104,9 +92,7 @@ function SignUpPage() {
               />
             </div>
             <div className="relative">
-              <label htmlFor="confirm-password" className="sr-only">
-                Confirm Password
-              </label>
+              <label htmlFor="confirm-password" className="sr-only">Confirm Password</label>
               <input
                 id="confirm-password"
                 name="confirm-password"
@@ -170,13 +156,13 @@ function SignUpPage() {
         </div>
         <p className="mt-2 text-center text-sm text-gray-600">
           Already have an account?{' '}
-          <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+          <a href="/auth/signin" className="font-medium text-indigo-600 hover:text-indigo-500">
             Sign in
           </a>
         </p>
       </div>
     </div>
-  )
+  );
 }
 
-export default SignUpPage
+export default SignUpPage;

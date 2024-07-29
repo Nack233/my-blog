@@ -7,10 +7,34 @@ function SignInPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your sign-in logic here
-    console.log('Sign in with:', email, password);
+  
+    try {
+      const res = await fetch("http://localhost:3000/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+  
+      if (res.ok) {
+        const data = await res.json();
+        console.log('Sign in successful:', data);
+        // Handle successful sign-in
+        // You might want to store the user's token and redirect
+        localStorage.setItem('authToken', data.token);
+        window.location.href = '/blogs'; // Redirect to a protected route
+      } else {
+        const errorData = await res.json();
+        console.error("Sign in failed:", errorData.message);
+        alert("Invalid credentials, please try again.");
+      }
+    } catch (error) {
+      console.error("Error during sign in:", error);
+      alert("An error occurred, please try again.");
+    }
   };
 
   return (
