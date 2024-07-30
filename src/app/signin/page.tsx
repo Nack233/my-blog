@@ -22,14 +22,13 @@ function SignInPage() {
       if (res.ok) {
         const data = await res.json();
         console.log('Sign in successful:', data);
-        // Handle successful sign-in
-        // You might want to store the user's token and redirect
         localStorage.setItem('authToken', data.token);
-        window.location.href = '/blogs'; // Redirect to a protected route
+        localStorage.setItem('userId', data.user.id);
+        window.location.href = `/user/${data.user.id}`; // Redirect to user's page
       } else {
         const errorData = await res.json();
         console.error("Sign in failed:", errorData.message);
-        alert("Invalid credentials, please try again.");
+        alert(errorData.message || "Invalid credentials, please try again.");
       }
     } catch (error) {
       console.error("Error during sign in:", error);
